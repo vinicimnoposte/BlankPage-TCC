@@ -147,11 +147,11 @@ Material:
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0.42492896, g: 1, b: 0.3726415, a: 1}
+    - _OutlineColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 0, b: 0.5273676, a: 1}
-    - _UnderlayColor: {r: 0.04460168, g: 1, b: 0, a: 0.5}
+    - _UnderlayColor: {r: 1, g: 0.88914996, b: 0, a: 0.5}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
