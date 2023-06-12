@@ -1,5 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
+using System;
+
+
 
 public class Dice : MonoBehaviour
 {
@@ -9,12 +13,16 @@ public class Dice : MonoBehaviour
     public ParticleSystem erroParticleSystem;
     public ParticleSystem criticoParticleSystem;
 
+    private bool rolling = false;
+    private int diceValue = 0;
+
+    public event Action OnDiceRoll;
+
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
         LoadDiceSides();
 
-        // Procura e atribui as referências dos sistemas de partículas em tempo de execução
         acertoParticleSystem = GameObject.Find("Acerto").GetComponent<ParticleSystem>();
         erroParticleSystem = GameObject.Find("Erro").GetComponent<ParticleSystem>();
         criticoParticleSystem = GameObject.Find("Critico").GetComponent<ParticleSystem>();
@@ -27,46 +35,46 @@ public class Dice : MonoBehaviour
 
     private IEnumerator RollCoroutine()
     {
-        // Número de rotações do dado antes de mostrar o resultado final
-        int rolls = Random.Range(10, 20);
+        rolling = true;
+        int rolls = UnityEngine.Random.Range(10, 20);
 
         for (int i = 0; i < rolls; i++)
         {
-            int randomDiceSide = Random.Range(0, diceSides.Length);
-            Debug.Log("Random dice side index: " + randomDiceSide);
+            int randomDiceSide = UnityEngine.Random.Range(0, diceSides.Length);
             rend.sprite = diceSides[randomDiceSide];
 
             yield return new WaitForSeconds(0.1f);
         }
 
-        int finalSide = Random.Range(1, 11); // Altera o intervalo para 1-10 (10 lados)
-        Debug.Log("Final dice side: " + finalSide);
-        rend.sprite = diceSides[finalSide - 1];
+        diceValue = UnityEngine.Random.Range(1, 11);
+        rend.sprite = diceSides[diceValue - 1];
 
-        // Ativa as partículas com base no resultado do dado
-        if (finalSide >= 5 && finalSide < 10)
+        if (diceValue >= 5 && diceValue < 10)
         {
             PlayParticleEffect(acertoParticleSystem, false);
             erroParticleSystem.Stop();
             criticoParticleSystem.Stop();
         }
-        else if (finalSide < 5)
+        else if (diceValue < 5)
         {
             PlayParticleEffect(erroParticleSystem, false);
             acertoParticleSystem.Stop();
             criticoParticleSystem.Stop();
         }
-        else if (finalSide == 10)
+        else if (diceValue == 10)
         {
             PlayParticleEffect(criticoParticleSystem, true);
             acertoParticleSystem.Stop();
             erroParticleSystem.Stop();
         }
+
+        rolling = false;
+        OnDiceRoll?.Invoke();
     }
 
     private void LoadDiceSides()
     {
-        diceSides = new Sprite[10]; // Altera o tamanho para 10
+        diceSides = new Sprite[10];
 
         for (int i = 0; i < diceSides.Length; i++)
         {
@@ -97,5 +105,15 @@ public class Dice : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         particleSystem.Stop();
+    }
+
+    public int GetDiceValue()
+    {
+        return diceValue;
+    }
+
+    public bool IsRolling()
+    {
+        return rolling;
     }
 }
