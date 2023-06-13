@@ -14,7 +14,7 @@ namespace OpenAI
         [SerializeField] private RectTransform received;
 
         private float height;
-        private OpenAIApi openai = new OpenAIApi();
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private List<ChatMessage> messages = new List<ChatMessage>();
         private string prompt = "Act like a capitalist goblin who only responds sarcastically.";
@@ -22,7 +22,7 @@ namespace OpenAI
         private string prompt3 = "Answer in a short way, always correctly following the rules of the English language.";
         private string prompt4 = "Know that Crinter is an RPG system whose concept is to bring freedom to the user, where it motivates him to write his own story the way he prefers.";
         private string prompt5 = "Crinter is about being accessible, inclusive and never-ending.";
-        private string prompt6 = "Do not give information about Crinter and Blank Page to the player, unless the player asks about it, you can tell everything you know.";
+        private string prompt6 = "Do not give information about Crinter and Blank Page to the player, unless the player asks about it, you can tell everything you know about Crinter.";
         private string prompt7 = "The RPG system and the application are developed by the studio called: Blank Page.";
         
        
