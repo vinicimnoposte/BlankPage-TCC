@@ -14,7 +14,7 @@ namespace OpenAI
         [SerializeField] private RectTransform received;
 
         private float height;
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private List<ChatMessage> messages = new List<ChatMessage>();
         private string prompt = "Act like a capitalist goblin who only responds sarcastically.";

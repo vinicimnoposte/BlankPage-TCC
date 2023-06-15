@@ -1,9 +1,6 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using TMPro;
-using System;
-
-
 
 public class Dice : MonoBehaviour
 {
