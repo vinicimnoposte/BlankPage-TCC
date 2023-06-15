@@ -6,9 +6,9 @@ public class Dice : MonoBehaviour
 {
     public SpriteRenderer rend;
     public Sprite[] diceSides;
-    public ParticleSystem acertoParticleSystem;
-    public ParticleSystem erroParticleSystem;
-    public ParticleSystem criticoParticleSystem;
+    public GameObject acertoParticlePrefab;
+    public GameObject erroParticlePrefab;
+    public GameObject criticoParticlePrefab;
 
     private bool rolling = false;
     private int diceValue = 0;
@@ -19,10 +19,6 @@ public class Dice : MonoBehaviour
     {
         rend = GetComponent<SpriteRenderer>();
         LoadDiceSides();
-
-        acertoParticleSystem = GameObject.Find("Acerto").GetComponent<ParticleSystem>();
-        erroParticleSystem = GameObject.Find("Erro").GetComponent<ParticleSystem>();
-        criticoParticleSystem = GameObject.Find("Critico").GetComponent<ParticleSystem>();
     }
 
     public void RollTheDice()
@@ -48,21 +44,15 @@ public class Dice : MonoBehaviour
 
         if (diceValue >= 5 && diceValue < 10)
         {
-            PlayParticleEffect(acertoParticleSystem, false);
-            erroParticleSystem.Stop();
-            criticoParticleSystem.Stop();
+            PlayParticleEffect(acertoParticlePrefab);
         }
         else if (diceValue < 5)
         {
-            PlayParticleEffect(erroParticleSystem, false);
-            acertoParticleSystem.Stop();
-            criticoParticleSystem.Stop();
+            PlayParticleEffect(erroParticlePrefab);
         }
         else if (diceValue == 10)
         {
-            PlayParticleEffect(criticoParticleSystem, true);
-            acertoParticleSystem.Stop();
-            erroParticleSystem.Stop();
+            PlayParticleEffect(criticoParticlePrefab);
         }
 
         rolling = false;
@@ -85,23 +75,26 @@ public class Dice : MonoBehaviour
         }
     }
 
-    private void PlayParticleEffect(ParticleSystem particleSystem, bool isCritical)
+    private void PlayParticleEffect(GameObject particlePrefab)
     {
-        if (particleSystem != null)
+        if (particlePrefab != null)
         {
+            GameObject particleObject = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
             particleSystem.Play();
-            StartCoroutine(StopParticleEffect(particleSystem));
+            StartCoroutine(StopParticleEffect(particleSystem, particleObject));
         }
         else
         {
-            Debug.LogError("Particle system is null.");
+            Debug.LogError("Particle prefab is null.");
         }
     }
 
-    private IEnumerator StopParticleEffect(ParticleSystem particleSystem)
+    private IEnumerator StopParticleEffect(ParticleSystem particleSystem, GameObject particleObject)
     {
         yield return new WaitForSeconds(2f);
         particleSystem.Stop();
+        Destroy(particleObject, particleSystem.main.duration);
     }
 
     public int GetDiceValue()
