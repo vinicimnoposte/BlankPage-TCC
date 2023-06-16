@@ -24,7 +24,7 @@ public class ButtonController : MonoBehaviour
         UpdateDiceCount();
     }
 
-    private void UpdateDiceCount()
+    public void UpdateDiceCount()
     {
         int diceCount = diceManager.diceList.Count;
         diceCountText.text = diceCount.ToString();

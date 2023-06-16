@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Dice : MonoBehaviour
@@ -13,7 +11,7 @@ public class Dice : MonoBehaviour
     private bool rolling = false;
     private int diceValue = 0;
 
-    public event Action OnDiceRoll;
+    public event System.Action OnDiceRoll;
 
     private void Start()
     {
@@ -26,7 +24,7 @@ public class Dice : MonoBehaviour
         StartCoroutine(RollCoroutine());
     }
 
-    private IEnumerator RollCoroutine()
+    private System.Collections.IEnumerator RollCoroutine()
     {
         rolling = true;
         int rolls = UnityEngine.Random.Range(10, 20);
@@ -42,11 +40,11 @@ public class Dice : MonoBehaviour
         diceValue = UnityEngine.Random.Range(1, 11);
         rend.sprite = diceSides[diceValue - 1];
 
-        if (diceValue >= 5 && diceValue < 10)
+        if (diceValue >= 6 && diceValue < 10)
         {
             PlayParticleEffect(acertoParticlePrefab);
         }
-        else if (diceValue < 5)
+        else if (diceValue < 6)
         {
             PlayParticleEffect(erroParticlePrefab);
         }
@@ -81,8 +79,16 @@ public class Dice : MonoBehaviour
         {
             GameObject particleObject = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
-            particleSystem.Play();
-            StartCoroutine(StopParticleEffect(particleSystem, particleObject));
+
+            if (particleSystem != null)
+            {
+                particleSystem.Play();
+                StartCoroutine(StopParticleEffect(particleSystem, particleObject));
+            }
+            else
+            {
+                Debug.LogError("Particle system component not found in the particle prefab.");
+            }
         }
         else
         {
@@ -90,7 +96,7 @@ public class Dice : MonoBehaviour
         }
     }
 
-    private IEnumerator StopParticleEffect(ParticleSystem particleSystem, GameObject particleObject)
+    private System.Collections.IEnumerator StopParticleEffect(ParticleSystem particleSystem, GameObject particleObject)
     {
         yield return new WaitForSeconds(2f);
         particleSystem.Stop();
