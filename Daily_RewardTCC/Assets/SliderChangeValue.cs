@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +20,7 @@ public class SliderChangeValue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void UpdateText(float val)
     {

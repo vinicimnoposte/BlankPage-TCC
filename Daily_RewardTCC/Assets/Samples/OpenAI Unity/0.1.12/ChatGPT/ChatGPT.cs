@@ -9,12 +9,12 @@ namespace OpenAI
         [SerializeField] private InputField inputField;
         [SerializeField] private Button button;
         [SerializeField] private ScrollRect scroll;
-
+        
         [SerializeField] private RectTransform sent;
         [SerializeField] private RectTransform received;
 
         private float height;
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private List<ChatMessage> messages = new List<ChatMessage>();
         private string prompt = "Act like a capitalist goblin who only responds sarcastically.";
@@ -24,8 +24,7 @@ namespace OpenAI
         private string prompt5 = "Crinter is about being accessible, inclusive and never-ending.";
         private string prompt6 = "Do not give information about Crinter and Blank Page to the player, unless the player asks about it, you can tell everything you know about Crinter.";
         private string prompt7 = "The RPG system and the application are developed by the studio called: Blank Page.";
-        
-       
+
         private void Start()
         {
             button.onClick.AddListener(SendReply);
@@ -33,6 +32,7 @@ namespace OpenAI
 
         private void AppendMessage(ChatMessage message)
         {
+            
             scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
 
             var item = Instantiate(message.Role == "user" ? sent : received, scroll.content);
@@ -51,18 +51,17 @@ namespace OpenAI
                 Role = "user",
                 Content = inputField.text
             };
-
+            
             AppendMessage(newMessage);
 
             if (messages.Count == 0) newMessage.Content = prompt + prompt2 + prompt3 + prompt4 + prompt5 + prompt6 + prompt7 + "\n" + inputField.text;
 
             messages.Add(newMessage);
-
+            
             button.enabled = false;
             inputField.text = "";
             inputField.enabled = false;
-
-
+            
             // Complete the instruction
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
             {
@@ -74,7 +73,7 @@ namespace OpenAI
             {
                 var message = completionResponse.Choices[0].Message;
                 message.Content = message.Content.Trim();
-
+                
                 messages.Add(message);
                 AppendMessage(message);
             }

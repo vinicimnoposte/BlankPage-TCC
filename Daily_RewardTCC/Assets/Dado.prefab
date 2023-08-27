@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7592679900852485285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2926, y: -0.2483, z: 0}
-  m_LocalScale: {x: 0.17813627, y: 0.18885008, z: 2.5}
+  m_LocalScale: {x: 0.14012323, y: 0.14855078, z: 1.9665174}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,5 +137,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 05db777132cdadb488b723a4ed839962, type: 3}
   - {fileID: 21300000, guid: bf05a2e971127ee45a5c177717a25ad6, type: 3}
   acertoParticlePrefab: {fileID: 7629643736419519544, guid: 187bd832b01dcde4194a37fd6dd2cf9a, type: 3}
-  erroParticlePrefab: {fileID: 3545198023858293625, guid: 03633aefaf06e5e429435784bcf0be0d, type: 3}
-  criticoParticlePrefab: {fileID: 5847550480094703279, guid: d01ff17cd27e43d4289e58057dd32c83, type: 3}
+  erroParticlePrefab: {fileID: 7629643736419519544, guid: 187bd832b01dcde4194a37fd6dd2cf9a, type: 3}
+  criticoParticlePrefab: {fileID: 7629643736419519544, guid: 187bd832b01dcde4194a37fd6dd2cf9a, type: 3}

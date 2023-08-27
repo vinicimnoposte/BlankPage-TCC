@@ -28,4 +28,10 @@ public class CarregadorCena : MonoBehaviour
     {
         SceneManager.LoadScene(menu_cena);
     }
+
+    public void LoadAdditive(string sceneName) 
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+
+    }
 }
