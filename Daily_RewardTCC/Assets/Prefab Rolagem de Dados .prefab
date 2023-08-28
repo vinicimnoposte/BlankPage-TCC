@@ -32,7 +32,7 @@ RectTransform:
   m_Children:
   - {fileID: 3308066288749247770}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ RectTransform:
   - {fileID: 3308066289638825548}
   - {fileID: 3308066288377534813}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -575,7 +575,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1383,7 +1383,7 @@ RectTransform:
   m_Children:
   - {fileID: 3308066288137153436}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2059,16 +2059,16 @@ RectTransform:
   m_GameObject: {fileID: 3308066288527971635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.93, y: 2.94, z: 5}
+  m_LocalScale: {x: 0.93000007, y: 2.9400005, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3308066287960673480}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 5
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 463, y: 872}
+  m_AnchoredPosition: {x: 463.00003, y: 872}
   m_SizeDelta: {x: 128.29, y: 27.601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3308066288527971624
@@ -2734,7 +2734,7 @@ RectTransform:
   m_Children:
   - {fileID: 3308066288455148424}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2885,7 +2885,6 @@ RectTransform:
   - {fileID: 3308066289269681344}
   - {fileID: 3308066288457130154}
   - {fileID: 3308066289410112394}
-  - {fileID: 3308066288527971636}
   - {fileID: 3308066288909800464}
   - {fileID: 3308066289232607302}
   - {fileID: 3308066287657227175}
@@ -2893,6 +2892,7 @@ RectTransform:
   - {fileID: 3308066287644749445}
   - {fileID: 3308066288042223061}
   - {fileID: 3308066289003832055}
+  - {fileID: 3308066288527971636}
   m_Father: {fileID: 4523299771803177106}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2995,7 +2995,7 @@ RectTransform:
   m_Children:
   - {fileID: 3308066289103195090}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3417,7 +3417,7 @@ Transform:
   m_Children:
   - {fileID: 3308066288424479157}
   m_Father: {fileID: 3308066288983273962}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3308066289269681359
 GameObject:
@@ -3837,20 +3837,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceContainer: {fileID: 3308066288042223060}
   dicePrefab: {fileID: 7592679900852485285, guid: 99538e9100b3ba444b67dcef7089e7ed, type: 3}
-  initialDiceCount: 1
   maxDiceCount: 9
-  diceSpacing: {x: 10, y: 10, z: 10}
-  distance: 10
-  ancora1: {fileID: 3308066289705436778}
-  ancora2: {fileID: 3308066287894213457}
-  ancora3: {fileID: 3308066289163276989}
-  ancora4: {fileID: 3308066288559384967}
-  ancora5: {fileID: 3308066289019204650}
-  ancora6: {fileID: 3308066288012868044}
-  ancora7: {fileID: 3308066288733929874}
-  ancora8: {fileID: 3308066288349352033}
-  ancora9: {fileID: 3308066288621071413}
-  diceList: []
+  ancoraPoints:
+  - {fileID: 3308066289705436778}
+  - {fileID: 3308066287894213457}
+  - {fileID: 3308066289163276989}
+  - {fileID: 3308066288559384967}
+  - {fileID: 3308066289019204650}
+  - {fileID: 3308066288012868044}
+  - {fileID: 3308066288733929874}
+  - {fileID: 3308066288349352033}
+  - {fileID: 3308066288621071413}
   sumText: {fileID: 3308066289718054118}
   acertosText: {fileID: 3308066288352741586}
   errosText: {fileID: 3308066289624156912}

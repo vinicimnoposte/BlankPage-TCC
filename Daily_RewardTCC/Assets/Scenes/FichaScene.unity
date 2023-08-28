@@ -4153,6 +4153,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3308066289434147255, guid: 949aa4191bc8716459eff171b2cdf179, type: 3}
+      propertyPath: maxDiceCount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308066289434147255, guid: 949aa4191bc8716459eff171b2cdf179, type: 3}
+      propertyPath: destroyInitialDiceDelay
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4523299771803177106, guid: 949aa4191bc8716459eff171b2cdf179, type: 3}
       propertyPath: m_RootOrder
       value: 1

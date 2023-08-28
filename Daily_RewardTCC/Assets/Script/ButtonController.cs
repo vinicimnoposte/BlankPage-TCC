@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    public DiceManager diceManager; // Referência ao DiceManager
-    public TMP_Text diceCountText; // Referência ao Text para exibir a contagem de dados
+    public DiceManager diceManager; 
+    public TMP_Text diceCountText;  
 
     private void Start()
     {

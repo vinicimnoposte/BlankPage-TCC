@@ -1,80 +1,66 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class DiceManager : MonoBehaviour
 {
-    public GameObject diceContainer; // Objeto pai dos dados
+    public GameObject diceContainer;
     public GameObject dicePrefab;
-    public int initialDiceCount = 1;
     public int maxDiceCount = 9;
-    public Vector3 diceSpacing;
-    public float distance;
-    public GameObject ancora1, ancora2, ancora3, ancora4, ancora5, ancora6, ancora7, ancora8, ancora9;
-
-    public List<Dice> diceList = new List<Dice>();
+    public GameObject[] ancoraPoints;
     public TextMeshProUGUI sumText;
     public TextMeshProUGUI acertosText;
     public TextMeshProUGUI errosText;
+    public float destroyInitialDiceDelay = 3f; // Tempo de espera antes de destruir os dados iniciais
 
     private int acertosCount = 0;
     private int errosCount = 0;
     private bool isRolling = false;
+    private bool rollingInProgress = false;
+    private bool additionalDiceRollingInProgress = false;
+
+    public List<Dice> diceList = new List<Dice>();
+    private Vector3 diceSpacing;
+    private float distance;
+    private Coroutine rollingCoroutine; // Usado para controlar as rolagens
+    private Coroutine destroyInitialDiceCoroutine; // Usado para destruir os dados iniciais
 
     private void Start()
     {
-        diceList.Clear();
         diceSpacing = new Vector3(3f, 3f, 3f);
     }
 
     public void CreateDice(int count)
     {
-        count = Mathf.Clamp(count, 1, maxDiceCount - diceList.Count);
+        if (rollingInProgress)
+            return;
+
+        count = Mathf.Clamp(count, 1, maxDiceCount);
+
+        StartCoroutine(RollAndAddDice(count));
+    }
+
+    private IEnumerator RollAndAddDice(int count)
+    {
+        rollingInProgress = true;
 
         for (int i = 0; i < count; i++)
         {
-            Vector3 position = new Vector3(0f, 0f, 0f);
-            // Vector3 soma = position + diceSpacing;
-
-            switch (diceList.Count)
+            if (diceList.Count >= maxDiceCount)
             {
-                case 0:
-                    position = ancora1.transform.position;
-                    break;
-                case 1:
-                    position = ancora2.transform.position;
-                    break;
-                case 2:
-                    position = ancora3.transform.position;
-                    break;
-                case 3:
-                    position = ancora4.transform.position;
-                    break;
-                case 4:
-                    position = ancora5.transform.position;
-                    break;
-                case 5:
-                    position = ancora6.transform.position;
-                    break;
-                case 6:
-                    position = ancora7.transform.position;
-                    break;
-                case 7:
-                    position = ancora8.transform.position;
-                    break;
-                case 8:
-                    position = ancora9.transform.position;
-                    break;
-     
+                Dice removedDice = diceList[0]; // Pega o dado mais antigo
+                diceList.RemoveAt(0);
+                Destroy(removedDice.gameObject);
+
+                removedDice.OnDiceRoll -= UpdateSum;
+                removedDice.OnDiceRoll -= CountAcertos;
+                removedDice.OnDiceRoll -= CountErros;
+                removedDice.OnDiceRoll -= CheckRollingState;
             }
-                    
 
-
+            Vector3 position = GetNextDicePosition();
             GameObject diceObject = Instantiate(dicePrefab, position, Quaternion.identity, diceContainer.transform);
-            distance = diceSpacing.x + distance;
-
-
-            position = position + diceSpacing;
 
             Dice dice = diceObject.GetComponent<Dice>();
             diceList.Add(dice);
@@ -83,23 +69,86 @@ public class DiceManager : MonoBehaviour
             dice.OnDiceRoll += CountAcertos;
             dice.OnDiceRoll += CountErros;
             dice.OnDiceRoll += CheckRollingState;
-            
+
+            yield return new WaitUntil(() => !dice.IsRolling());
         }
+
+        rollingInProgress = false;
+
+        // Inicia o coroutine para destruir os dados iniciais após o tempo especificado
+        destroyInitialDiceCoroutine = StartCoroutine(DestroyInitialDiceAfterDelay(destroyInitialDiceDelay));
     }
 
+    private IEnumerator DestroyInitialDiceAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Destrói os dados iniciais
+        for (int i = 0; i < maxDiceCount; i++)
+        {
+            if (i < diceList.Count)
+            {
+
+                Dice removedDice = diceList[i];
+                diceList.RemoveAt(i);
+                Destroy(removedDice.gameObject);
+
+                removedDice.OnDiceRoll -= UpdateSum;
+                removedDice.OnDiceRoll -= CountAcertos;
+                removedDice.OnDiceRoll -= CountErros;
+                removedDice.OnDiceRoll -= CheckRollingState;
+
+
+            }
+        }
+
+        // Inicia o coroutine para rolar os dados adicionais
+        rollingCoroutine = StartCoroutine(RollAdditionalDice());
+    }
+
+    private IEnumerator RollAdditionalDice()
+    {
+        additionalDiceRollingInProgress = true;
+
+        foreach (Dice dice in diceList)
+        {
+            dice.RollTheDice();
+            yield return new WaitUntil(() => !dice.IsRolling());
+        }
+
+        additionalDiceRollingInProgress = false;
+    }
+
+    private Vector3 GetNextDicePosition()
+    {
+        int diceCount = diceList.Count;
+        Vector3 position = Vector3.zero;
+
+        if (diceCount < ancoraPoints.Length)
+        {
+            position = ancoraPoints[diceCount].transform.position;
+        }
+        else
+        {
+            int anchorIndex = diceCount % ancoraPoints.Length;
+            position = ancoraPoints[anchorIndex].transform.position;
+        }
+
+        return position;
+    }
 
     public void RemoveDice()
     {
         if (diceList.Count >= 1)
         {
-            Dice lastDice = diceList[diceList.Count - 1];
-            diceList.Remove(lastDice);
-            Destroy(lastDice.gameObject);
+            Dice removedDice = diceList[0]; // Pega o dado mais antigo
+            diceList.RemoveAt(0);
+            Destroy(removedDice.gameObject);
 
-            lastDice.OnDiceRoll -= UpdateSum;
-            lastDice.OnDiceRoll -= CountAcertos;
-            lastDice.OnDiceRoll -= CountErros;
-            lastDice.OnDiceRoll -= CheckRollingState;
+            removedDice.OnDiceRoll -= UpdateSum;
+            removedDice.OnDiceRoll -= CountAcertos;
+            removedDice.OnDiceRoll -= CountErros;
+            removedDice.OnDiceRoll -= CheckRollingState;
 
             UpdateSum();
             CountAcertos();
