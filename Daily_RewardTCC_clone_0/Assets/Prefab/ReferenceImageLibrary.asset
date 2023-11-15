@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5321548162787242484
+  m_GuidHigh: 1386949804079411844
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4664330985438518314
+      m_GuidHigh: 4275461678822091425
+    m_SerializedTextureGuid:
+      m_GuidLow: 4293316714056002634
+      m_GuidHigh: 7172506604175867418
+    m_Size: {x: 0.1, y: 0.09826667}
+    m_SpecifySize: 1
+    m_Name: spider
+    m_Texture: {fileID: 2800000, guid: f18e2c4aeccd3b941abe0b43c1dc8963, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4713752419466467259
+      m_GuidHigh: 13483404853671304091
+    m_SerializedTextureGuid:
+      m_GuidLow: 3586147859412892930
+      m_GuidHigh: 16116764248556343050
+    m_Size: {x: 0.1, y: 0.09828326}
+    m_SpecifySize: 1
+    m_Name: dwarf
+    m_Texture: {fileID: 2800000, guid: 58553d028e7a31c40a8fea9bb13faadf, type: 3}
