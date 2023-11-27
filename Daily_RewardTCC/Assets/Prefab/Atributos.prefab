@@ -4116,8 +4116,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Anao
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
-  m_sharedMaterial: {fileID: -8002507028515004357, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
+  m_sharedMaterial: {fileID: -6171404110752900280, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4357,7 +4357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3957767, y: 21.43451}
+  m_AnchoredPosition: {x: 2.3957767, y: 17.3}
   m_SizeDelta: {x: 185.854, y: 126.816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3088538087190705821
@@ -5606,8 +5606,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Digite o nome do seu personagem...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
-  m_sharedMaterial: {fileID: -8002507028515004357, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
+  m_sharedMaterial: {fileID: -6171404110752900280, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5631,8 +5631,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.2
-  m_fontSizeBase: 75.2
+  m_fontSize: 65.51
+  m_fontSizeBase: 65.51
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 28.86
@@ -6583,8 +6583,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
-  m_sharedMaterial: {fileID: -8002507028515004357, guid: a2e2d10f9401a324dac88a4efff02813, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
+  m_sharedMaterial: {fileID: -6171404110752900280, guid: e7ca9215bd453d640a6ed1206ff81962, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
