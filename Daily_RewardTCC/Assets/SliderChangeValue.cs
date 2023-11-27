@@ -15,6 +15,7 @@ public class SliderChangeValue : MonoBehaviour
     {
         UpdateText(slider.value);
         slider.onValueChanged.AddListener(UpdateText);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
