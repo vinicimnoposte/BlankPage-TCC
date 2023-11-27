@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwipeScene.unity
     guid: 57186ffd25a8c8b45b61896ec4c2d2d6
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: dd89f0ee40e920b45b0e2050881f409d, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 742f6f622496dfb45ba67f12b2be1d3e, type: 2}
