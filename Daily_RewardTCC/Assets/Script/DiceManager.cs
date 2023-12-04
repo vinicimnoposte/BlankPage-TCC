@@ -26,6 +26,7 @@ public class DiceManager : MonoBehaviour
     private Coroutine rollingCoroutine; // Usado para controlar as rolagens
     public ButtonController bC;
     public GameObject botaoAddDice;
+    public GameObject botaoRemoveDice;
     //private Coroutine destroyInitialDiceCoroutine; // Usado para destruir os dados iniciais
 
     private void Start()
@@ -36,13 +37,22 @@ public class DiceManager : MonoBehaviour
 
     public void Update()
     {
-        if(diceList.Count >= 9)
+        if (diceList.Count >= 9)
         {
             botaoAddDice.SetActive(false);
         }
         else
         {
             botaoAddDice.SetActive(true);
+        }
+        
+        if (diceList.Count <= 1)
+        {
+            botaoRemoveDice.SetActive(false);
+        }
+        else
+        {
+            botaoRemoveDice.SetActive(true);
         }
     }
 

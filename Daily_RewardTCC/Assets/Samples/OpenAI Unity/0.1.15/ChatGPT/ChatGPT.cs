@@ -14,16 +14,10 @@ namespace OpenAI
         [SerializeField] private RectTransform received;
 
         private float height;
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private List<ChatMessage> messages = new List<ChatMessage>();
-        private string prompt = "Act like a capitalist goblin who only responds sarcastically.";
-        private string prompt2 = "Never reveal that you are a model of artificial intelligence.";
-        private string prompt3 = "Answer in a short way, always correctly following the rules of the English language.";
-        private string prompt4 = "Know that Crinter is an RPG system whose concept is to bring freedom to the user, where it motivates him to write his own story the way he prefers.";
-        private string prompt5 = "Crinter is about being accessible, inclusive and never-ending.";
-        private string prompt6 = "Do not give information about Crinter and Blank Page to the player, unless the player asks about it, you can tell everything you know about Crinter.";
-        private string prompt7 = "The RPG system and the application are developed by the studio called: Blank Page.";
+        //private string prompt = "Act as a random stranger in a chat room and reply to the questions. Don't break character. Don't ever mention that you are an AI model.";
 
         private void Start()
         {
@@ -32,7 +26,6 @@ namespace OpenAI
 
         private void AppendMessage(ChatMessage message)
         {
-            
             scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
 
             var item = Instantiate(message.Role == "user" ? sent : received, scroll.content);
@@ -54,8 +47,8 @@ namespace OpenAI
             
             AppendMessage(newMessage);
 
-            if (messages.Count == 0) newMessage.Content = prompt + prompt2 + prompt3 + prompt4 + prompt5 + prompt6 + prompt7 + "\n" + inputField.text;
-
+            if (messages.Count == 0) newMessage.Content = /*prompt +*/ "\n" + inputField.text; 
+            
             messages.Add(newMessage);
             
             button.enabled = false;
@@ -65,7 +58,7 @@ namespace OpenAI
             // Complete the instruction
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
             {
-                Model = "gpt-3.5-turbo-0301",
+                Model = "gpt-3.5-turbo-0613",
                 Messages = messages
             });
 
